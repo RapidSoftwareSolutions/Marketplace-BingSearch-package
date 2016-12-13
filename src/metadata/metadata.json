@@ -40,7 +40,7 @@
                 }, {
                     "name": "textFormat",
                     "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `<b>` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `< b >` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
                     "required": false
                 }, {
                     "name": "responseFilter",
@@ -96,7 +96,7 @@
                 }, {
                     "name": "textFormat",
                     "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `<b>` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `< b >` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
                     "required": false
                 }, {
                     "name": "count",
@@ -147,7 +147,7 @@
                 }, {
                     "name": "textFormat",
                     "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `<b>` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `< b >` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
                     "required": false
                 }, {
                     "name": "aspect",
@@ -233,7 +233,7 @@
                 }, {
                     "name": "textFormat",
                     "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `<b>` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `< b >` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
                     "required": false
                 }, {
                     "name": "videoLength",
@@ -294,7 +294,7 @@
                 }, {
                     "name": "textFormat",
                     "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `<b>` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `< b >` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
                     "required": false
                 }, {
                     "name": "category",
@@ -350,7 +350,7 @@
                 }, {
                     "name": "textFormat",
                     "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `<b>` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `< b >` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
                     "required": false
                 }, {
                     "name": "count",
@@ -401,7 +401,7 @@
                 }, {
                     "name": "textFormat",
                     "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `<b>` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML `< b >` tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
                     "required": false
                 }, {
                     "name": "count",
