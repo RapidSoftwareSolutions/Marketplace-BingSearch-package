@@ -1,5 +1,5 @@
 # BingSearch Package
-The Bing Search API enables developers to embed search results in applications or websites. Add search functionality to a website, create unique consumer or enterprise apps, or develop new mash-ups.
+Embed Bing search results into your app.
 * Domain: microsoft.com
 * Credentials: subscriptionKey
 

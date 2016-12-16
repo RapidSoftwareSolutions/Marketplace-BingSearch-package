@@ -1,10 +1,10 @@
 {
     "package": "BingSearch",
     "tagline": "Bing Search API",
-    "description": "The Bing Search API enables developers to embed search results in applications or websites. Add search functionality to a website, create unique consumer or enterprise apps, or develop new mash-ups.",
+    "description": "Embed Bing search results into your app.",
     "image": "http://logo.clearbit.com/microsoft.com",
     "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-BingSearch-package",
-    "keywords": ["API", "Microsoft", "search"],
+    "keywords": ["API", "Microsoft", "search","data","image","images","video"],
     "accounts": {
         "domain": "microsoft.com",
         "credentials": ["subscriptionKey"]
