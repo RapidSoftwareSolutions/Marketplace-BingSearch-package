@@ -6,14 +6,14 @@ Embed Bing search results into your app.
 ## How to get credentials: 
  1. Create [Microsoft account](https://www.microsoft.com/cognitive-services/en-US/subscriptions) or log in. 
  2. Choose "Bing Search - Preview" to create new subscription
- 3. In **Key** section choose Key1 or Key2 and press <kbd>Show</kbd> or  <kbd>Copy</kbd>
+ 3. In **Key** section choose Key1 or Key2 and press Show or Copy
  
 ## BingSearch.advancedSearch
 This endpoint allows to get back a list of relevant data.
 
 | Field          | Type       | Description
 |----------------|------------|----------
-| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Servisces.
+| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Services.
 | query          | String     | The user's search query string.
 | market         | String     | The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.
 | safeSearch     | String     | A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate
@@ -28,7 +28,7 @@ This endpoint allows to get back a list of relevant webpages.
 
 | Field          | Type       | Description
 |----------------|------------|----------
-| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Servisces.
+| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Services.
 | query          | String     | The user's search query string.
 | market         | String     | The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.
 | safeSearch     | String     | A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate
@@ -42,7 +42,7 @@ This endpoint allows to get back a list of relevant images.
 
 | Field          | Type       | Description
 |----------------|------------|----------
-| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Servisces.
+| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Services.
 | query          | String     | The user's search query string.
 | market         | String     | The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.
 | safeSearch     | String     | A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate
@@ -63,7 +63,7 @@ This endpoint allows to get back a list of relevant videos.
 
 | Field          | Type       | Description
 |----------------|------------|----------
-| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Servisces.
+| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Services.
 | query          | String     | The user's search query string.
 | market         | String     | The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.
 | safeSearch     | String     | A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate
@@ -79,7 +79,7 @@ This endpoint allows to get back a list of relevant news.
 
 | Field          | Type       | Description
 |----------------|------------|----------
-| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Servisces.
+| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Services.
 | query          | String     | The user's search query string.
 | market         | String     | The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.
 | safeSearch     | String     | A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate
@@ -94,7 +94,7 @@ This endpoint allows to get back a list of related data.
 
 | Field          | Type       | Description
 |----------------|------------|----------
-| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Servisces.
+| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Services.
 | query          | String     | The user's search query string.
 | market         | String     | The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.
 | safeSearch     | String     | A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate
@@ -108,7 +108,7 @@ This endpoint allows to get back a list data with spelling suggestions.
 
 | Field          | Type       | Description
 |----------------|------------|----------
-| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Servisces.
+| subscriptionKey| credentials| The api key obtained from Microsoft Cognitive Services.
 | query          | String     | The user's search query string.
 | market         | String     | The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.
 | safeSearch     | String     | A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate

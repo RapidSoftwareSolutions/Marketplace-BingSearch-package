@@ -15,7 +15,7 @@
             "args": [{
                     "name": "subscriptionKey",
                     "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Servisces.",
+                    "info": "The api key obtained from Microsoft Cognitive Services.",
                     "required": true
                 }, {
                     "name": "query",
@@ -71,7 +71,7 @@
             "args": [{
                     "name": "subscriptionKey",
                     "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Servisces.",
+                    "info": "The api key obtained from Microsoft Cognitive Services.",
                     "required": true
                 }, {
                     "name": "query",
@@ -122,7 +122,7 @@
             "args": [{
                     "name": "subscriptionKey",
                     "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Servisces.",
+                    "info": "The api key obtained from Microsoft Cognitive Services.",
                     "required": true
                 }, {
                     "name": "query",
@@ -208,7 +208,7 @@
             "args": [{
                     "name": "subscriptionKey",
                     "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Servisces.",
+                    "info": "The api key obtained from Microsoft Cognitive Services.",
                     "required": true
                 }, {
                     "name": "query",
@@ -269,7 +269,7 @@
             "args": [{
                     "name": "subscriptionKey",
                     "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Servisces.",
+                    "info": "The api key obtained from Microsoft Cognitive Services.",
                     "required": true
                 }, {
                     "name": "query",
@@ -325,7 +325,7 @@
             "args": [{
                     "name": "subscriptionKey",
                     "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Servisces.",
+                    "info": "The api key obtained from Microsoft Cognitive Services.",
                     "required": true
                 }, {
                     "name": "query",
@@ -376,7 +376,7 @@
             "args": [{
                     "name": "subscriptionKey",
                     "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Servisces.",
+                    "info": "The api key obtained from Microsoft Cognitive Services.",
                     "required": true
                 }, {
                     "name": "query",
