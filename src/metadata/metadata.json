@@ -10,7 +10,7 @@
         "credentials": ["subscriptionKey"]
     },
     "blocks": [{
-            "name": "advacedSearch",
+            "name": "advancedSearch",
             "description": "This endpoint allows to get back a list of relevant data.",
             "args": [{
                     "name": "subscriptionKey",

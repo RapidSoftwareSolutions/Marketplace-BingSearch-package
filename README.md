@@ -8,7 +8,7 @@ Embed Bing search results into your app.
  2. Choose "Bing Search - Preview" to create new subscription
  3. In **Key** section choose Key1 or Key2 and press <kbd>Show</kbd> or  <kbd>Copy</kbd>
  
-## BingSearch.advacedSearch
+## BingSearch.advancedSearch
 This endpoint allows to get back a list of relevant data.
 
 | Field          | Type       | Description
