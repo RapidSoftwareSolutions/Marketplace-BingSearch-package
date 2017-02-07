@@ -1,3 +1,5 @@
+[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/BingSearch/functions?utm_source=RapidAPIGitHub_BingSearchFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+
 # BingSearch Package
 Embed Bing search results into your app.
 * Domain: microsoft.com
