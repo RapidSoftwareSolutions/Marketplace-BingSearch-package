@@ -1,425 +1,997 @@
 {
-    "package": "BingSearch",
-    "tagline": "Bing Search API",
-    "description": "Embed Bing search results into your app.",
-    "image": "http://logo.clearbit.com/microsoft.com",
-    "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-BingSearch-package",
-    "keywords": ["API", "Microsoft", "search","data","image","images","video"],
-    "accounts": {
-        "domain": "microsoft.com",
-        "credentials": ["subscriptionKey"]
+  "package": "BingSearch",
+  "tagline": "Bing Search API",
+  "description": "Embed Bing search results into your app.",
+  "image": "http://logo.clearbit.com/microsoft.com",
+  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-BingSearch-package",
+  "keywords": [
+    "API",
+    "Microsoft",
+    "search",
+    "data",
+    "image",
+    "images",
+    "video"
+  ],
+  "accounts": {
+    "domain": "microsoft.com",
+    "credentials": [
+      "subscriptionKey"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "advancedSearch",
+      "description": "This endpoint allows to get back a list of relevant data.",
+      "args": [
+        {
+          "name": "subscriptionKey",
+          "type": "credentials",
+          "info": "The api key obtained from Microsoft Cognitive Services.",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "The user's search query string.",
+          "required": true
+        },
+        {
+          "name": "market",
+          "type": "Select",
+          "options": [
+            "es-AR",
+            "en-AU",
+            "de-AT",
+            "nl-BE",
+            "fr-BE",
+            "pt-BR",
+            "en-CA",
+            "fr-CA",
+            "es-CL",
+            "da-DK",
+            "fi-FI",
+            "fr-FR",
+            "de-DE",
+            "zh-HK",
+            "en-IN",
+            "en-ID",
+            "en-IE",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "en-MY",
+            "es-MX",
+            "nl-NL",
+            "en-NZ",
+            "no-NO",
+            "zh-CN",
+            "pl-PL",
+            "pt-PT",
+            "en-PH",
+            "ru-RU",
+            "ar-SA",
+            "en-ZA",
+            "es-ES",
+            "sv-SE",
+            "fr-CH",
+            "de-CH",
+            "zh-TW",
+            "tr-TR",
+            "en-GB",
+            "en-US",
+            "es-US"
+          ],
+          "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
+          "required": false
+        },
+        {
+          "name": "safeSearch",
+          "type": "Select",
+          "options": [
+            "Off",
+            "Moderate",
+            "Strict"
+          ],
+          "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
+          "required": false
+        },
+        {
+          "name": "textDecorations",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
+          "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
+          "required": false
+        },
+        {
+          "name": "textFormat",
+          "type": "Select",
+          "options": [
+            "Raw",
+            "HTML"
+          ],
+          "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+          "required": false
+        },
+        {
+          "name": "responseFilter",
+          "type": "List",
+          "structure": {
+            "name": "responseFilter",
+            "type": "Select",
+            "options": [
+              "Computation",
+              "Images",
+              "News",
+              "RelatedSearches",
+              "SpellSuggestions",
+              "TimeZone",
+              "Videos",
+              "Webpages"
+            ],
+            "info": "Single response filter"
+          },
+          "info": "An array of answers to include in the response. If you do not specify this parameter, the response will include all search answers for which there's data. Possible values: Computation, Images, News, RelatedSearches, SpellSuggestions, TimeZone, Videos, Webpages",
+          "required": false
+        },
+        {
+          "name": "count",
+          "type": "Number",
+          "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     },
-    "blocks": [{
-            "name": "advancedSearch",
-            "description": "This endpoint allows to get back a list of relevant data.",
-            "args": [{
-                    "name": "subscriptionKey",
-                    "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Services.",
-                    "required": true
-                }, {
-                    "name": "query",
-                    "type": "String",
-                    "info": "The user's search query string.",
-                    "required": true
-                }, {
-                    "name": "market",
-                    "type": "String",
-                    "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
-                    "required": false
-                }, {
-                    "name": "safeSearch",
-                    "type": "String",
-                    "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
-                    "required": false
-                }, {
-                    "name": "textDecorations",
-                    "type": "String",
-                    "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
-                    "required": false
-                }, {
-                    "name": "textFormat",
-                    "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
-                    "required": false
-                }, {
-                    "name": "responseFilter",
-                    "type": "String",
-                    "info": "A comma-delimited list of answers to include in the response. If you do not specify this parameter, the response will include all search answers for which there's data. Possible values: Computation, Images, News, RelatedSearches, SpellSuggestions, TimeZone, Videos, Webpages",
-                    "required": false
-                }, {
-                    "name": "count",
-                    "type": "String",
-                    "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
-                    "required": false
-                }, {
-                    "name": "offset",
-                    "type": "String",
-                    "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "searchWeb",
-            "description": "This endpoint allows to get back a list of relevant webpages.",
-            "args": [{
-                    "name": "subscriptionKey",
-                    "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Services.",
-                    "required": true
-                }, {
-                    "name": "query",
-                    "type": "String",
-                    "info": "The user's search query string.",
-                    "required": true
-                }, {
-                    "name": "market",
-                    "type": "String",
-                    "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
-                    "required": false
-                }, {
-                    "name": "safeSearch",
-                    "type": "String",
-                    "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
-                    "required": false
-                }, {
-                    "name": "textDecorations",
-                    "type": "String",
-                    "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
-                    "required": false
-                }, {
-                    "name": "textFormat",
-                    "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
-                    "required": false
-                }, {
-                    "name": "count",
-                    "type": "String",
-                    "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
-                    "required": false
-                }, {
-                    "name": "offset",
-                    "type": "String",
-                    "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "searchImage",
-            "description": "This endpoint allows to get back a list of relevant images.",
-            "args": [{
-                    "name": "subscriptionKey",
-                    "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Services.",
-                    "required": true
-                }, {
-                    "name": "query",
-                    "type": "String",
-                    "info": "The user's search query string.",
-                    "required": true
-                }, {
-                    "name": "market",
-                    "type": "String",
-                    "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
-                    "required": false
-                }, {
-                    "name": "safeSearch",
-                    "type": "String",
-                    "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
-                    "required": false
-                }, {
-                    "name": "textDecorations",
-                    "type": "String",
-                    "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
-                    "required": false
-                }, {
-                    "name": "textFormat",
-                    "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
-                    "required": false
-                }, {
-                    "name": "aspect",
-                    "type": "String",
-                    "info": "Filter images by aspect ratio. The following are the possible filter values: Square — Return images with standard aspect ratio; Wide — Return images with wide screen aspect ratio; Tall — Return images with tall aspect ratio; All — Do not filter by aspect. Specifying this value is the same as not specifying the aspect parameter.",
-                    "required": false
-                }, {
-                    "name": "color",
-                    "type": "String",
-                    "info": "Filter images by color. The following are the possible filter values: ColorOnly — Return color images, Monochrome — Return black and white images, Black, Blue, Brown, Gray, Green, Orange, Pink, Purple, Red, Teal, White, Yellow",
-                    "required": false
-                }, {
-                    "name": "imageContent",
-                    "type": "String",
-                    "info": "Filter images by content. The following are the possible filter values: Face — Return images that show only a person's face; Portrait — Return images that show only a person's head and shoulders",
-                    "required": false
-                }, {
-                    "name": "size",
-                    "type": "String",
-                    "info": "Filter images by size. The following are the possible filter values: Small — Return images that are less than 200x200 pixels; Medium — Return images that are greater than or equal to 200x200 pixels but less than 500x500 pixels; Large — Return images that are 500x500 pixels or larger; Wallpaper — Return wallpaper images; All — Do not filter by size. Specifying this value is the same as not specifying the size parameter.",
-                    "required": false
-                }, {
-                    "name": "height",
-                    "type": "String",
-                    "info": "Filter images that have the specified height, in pixels.",
-                    "required": false
-                }, {
-                    "name": "width",
-                    "type": "String",
-                    "info": "Filter images that have the specified width, in pixels.",
-                    "required": false
-                }, {
-                    "name": "imageType",
-                    "type": "String",
-                    "info": "Filter images by image type. The following are the possible filter values: AnimatedGif — Return only animated GIFs; Clipart — Return only clip art images; Line — Return only line drawings; Photo — Return only photographs (excluding line drawings, animated Gifs, and clip art); Shopping — Return only images that contain items where Bing knows of a merchant that is selling the items.",
-                    "required": false
-                }, {
-                    "name": "count",
-                    "type": "String",
-                    "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
-                    "required": false
-                }, {
-                    "name": "offset",
-                    "type": "String",
-                    "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "searchVideo",
-            "description": "This endpoint allows to get back a list of relevant videos.",
-            "args": [{
-                    "name": "subscriptionKey",
-                    "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Services.",
-                    "required": true
-                }, {
-                    "name": "query",
-                    "type": "String",
-                    "info": "The user's search query string.",
-                    "required": true
-                }, {
-                    "name": "market",
-                    "type": "String",
-                    "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
-                    "required": false
-                }, {
-                    "name": "safeSearch",
-                    "type": "String",
-                    "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
-                    "required": false
-                }, {
-                    "name": "textDecorations",
-                    "type": "String",
-                    "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
-                    "required": false
-                }, {
-                    "name": "textFormat",
-                    "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
-                    "required": false
-                }, {
-                    "name": "videoLength",
-                    "type": "String",
-                    "info": "Filter videos by length. The following are the possible filter values: Short — Return videos that are less than 5 minutes; Medium — Return videos that are between 5 and 20 minutes, inclusive; Long — Return videos that are longer than 20 minutes; All — Do not filter by length. Specifying this value is the same as not specifying the videoLength parameter.",
-                    "required": false
-                }, {
-                    "name": "resolution",
-                    "type": "String",
-                    "info": "Filter videos by resolution. The following are the possible filter values: 480p — Return videos with a 480p or higher resolution; 720p — Return videos with a 720p or higher resolution; 1080p — Return videos with a 1080p or higher resolution; All — Do not filter by resolution. Specifying this value is the same as not specifying the resolution parameter.",
-                    "required": false
-                }, {
-                    "name": "count",
-                    "type": "String",
-                    "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
-                    "required": false
-                }, {
-                    "name": "offset",
-                    "type": "String",
-                    "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "searchNews",
-            "description": "This endpoint allows to get back a list of relevant news.",
-            "args": [{
-                    "name": "subscriptionKey",
-                    "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Services.",
-                    "required": true
-                }, {
-                    "name": "query",
-                    "type": "String",
-                    "info": "The user's search query string.",
-                    "required": true
-                }, {
-                    "name": "market",
-                    "type": "String",
-                    "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
-                    "required": false
-                }, {
-                    "name": "safeSearch",
-                    "type": "String",
-                    "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
-                    "required": false
-                }, {
-                    "name": "textDecorations",
-                    "type": "String",
-                    "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
-                    "required": false
-                }, {
-                    "name": "textFormat",
-                    "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
-                    "required": false
-                }, {
-                    "name": "category",
-                    "type": "String",
-                    "info": "The category of articles to return. For example, Sports articles or Entertainment articles. For a list of possible categories, see News Categories by Market (https://msdn.microsoft.com/en-us/library/dn760793.aspx#categoriesbymarket).",
-                    "required": false
-                }, {
-                    "name": "count",
-                    "type": "String",
-                    "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
-                    "required": false
-                }, {
-                    "name": "offset",
-                    "type": "String",
-                    "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getRelatedSearch",
-            "description": "This endpoint allows to get back a list of related data.",
-            "args": [{
-                    "name": "subscriptionKey",
-                    "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Services.",
-                    "required": true
-                }, {
-                    "name": "query",
-                    "type": "String",
-                    "info": "The user's search query string.",
-                    "required": true
-                }, {
-                    "name": "market",
-                    "type": "String",
-                    "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
-                    "required": false
-                }, {
-                    "name": "safeSearch",
-                    "type": "String",
-                    "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
-                    "required": false
-                }, {
-                    "name": "textDecorations",
-                    "type": "String",
-                    "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
-                    "required": false
-                }, {
-                    "name": "textFormat",
-                    "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
-                    "required": false
-                }, {
-                    "name": "count",
-                    "type": "String",
-                    "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
-                    "required": false
-                }, {
-                    "name": "offset",
-                    "type": "String",
-                    "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getSpellingSuggestions",
-            "description": "This endpoint allows to get back a list data with spelling suggestions.",
-            "args": [{
-                    "name": "subscriptionKey",
-                    "type": "credentials",
-                    "info": "The api key obtained from Microsoft Cognitive Services.",
-                    "required": true
-                }, {
-                    "name": "query",
-                    "type": "String",
-                    "info": "The user's search query string.",
-                    "required": true
-                }, {
-                    "name": "market",
-                    "type": "String",
-                    "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
-                    "required": false
-                }, {
-                    "name": "safeSearch",
-                    "type": "String",
-                    "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
-                    "required": false
-                }, {
-                    "name": "textDecorations",
-                    "type": "String",
-                    "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
-                    "required": false
-                }, {
-                    "name": "textFormat",
-                    "type": "String",
-                    "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
-                    "required": false
-                }, {
-                    "name": "count",
-                    "type": "String",
-                    "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
-                    "required": false
-                }, {
-                    "name": "offset",
-                    "type": "String",
-                    "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }]
+    {
+      "name": "searchWeb",
+      "description": "This endpoint allows to get back a list of relevant webpages.",
+      "args": [
+        {
+          "name": "subscriptionKey",
+          "type": "credentials",
+          "info": "The api key obtained from Microsoft Cognitive Services.",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "The user's search query string.",
+          "required": true
+        },
+        {
+          "name": "market",
+          "type": "Select",
+          "options": [
+            "es-AR",
+            "en-AU",
+            "de-AT",
+            "nl-BE",
+            "fr-BE",
+            "pt-BR",
+            "en-CA",
+            "fr-CA",
+            "es-CL",
+            "da-DK",
+            "fi-FI",
+            "fr-FR",
+            "de-DE",
+            "zh-HK",
+            "en-IN",
+            "en-ID",
+            "en-IE",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "en-MY",
+            "es-MX",
+            "nl-NL",
+            "en-NZ",
+            "no-NO",
+            "zh-CN",
+            "pl-PL",
+            "pt-PT",
+            "en-PH",
+            "ru-RU",
+            "ar-SA",
+            "en-ZA",
+            "es-ES",
+            "sv-SE",
+            "fr-CH",
+            "de-CH",
+            "zh-TW",
+            "tr-TR",
+            "en-GB",
+            "en-US",
+            "es-US"
+          ],
+          "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
+          "required": false
+        },
+        {
+          "name": "safeSearch",
+          "type": "Select",
+          "options": [
+            "Off",
+            "Moderate",
+            "Strict"
+          ],
+          "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
+          "required": false
+        },
+        {
+          "name": "textDecorations",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
+          "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
+          "required": false
+        },
+        {
+          "name": "textFormat",
+          "type": "Select",
+          "options": [
+            "Raw",
+            "HTML"
+          ],
+          "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+          "required": false
+        },
+        {
+          "name": "count",
+          "type": "Number",
+          "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "searchImage",
+      "description": "This endpoint allows to get back a list of relevant images.",
+      "args": [
+        {
+          "name": "subscriptionKey",
+          "type": "credentials",
+          "info": "The api key obtained from Microsoft Cognitive Services.",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "The user's search query string.",
+          "required": true
+        },
+        {
+          "name": "market",
+          "type": "Select",
+          "options": [
+            "es-AR",
+            "en-AU",
+            "de-AT",
+            "nl-BE",
+            "fr-BE",
+            "pt-BR",
+            "en-CA",
+            "fr-CA",
+            "es-CL",
+            "da-DK",
+            "fi-FI",
+            "fr-FR",
+            "de-DE",
+            "zh-HK",
+            "en-IN",
+            "en-ID",
+            "en-IE",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "en-MY",
+            "es-MX",
+            "nl-NL",
+            "en-NZ",
+            "no-NO",
+            "zh-CN",
+            "pl-PL",
+            "pt-PT",
+            "en-PH",
+            "ru-RU",
+            "ar-SA",
+            "en-ZA",
+            "es-ES",
+            "sv-SE",
+            "fr-CH",
+            "de-CH",
+            "zh-TW",
+            "tr-TR",
+            "en-GB",
+            "en-US",
+            "es-US"
+          ],
+          "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
+          "required": false
+        },
+        {
+          "name": "safeSearch",
+          "type": "Select",
+          "options": [
+            "Off",
+            "Moderate",
+            "Strict"
+          ],
+          "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
+          "required": false
+        },
+        {
+          "name": "textDecorations",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
+          "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
+          "required": false
+        },
+        {
+          "name": "textFormat",
+          "type": "Select",
+          "options": [
+            "Raw",
+            "HTML"
+          ],
+          "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+          "required": false
+        },
+        {
+          "name": "aspect",
+          "type": "Select",
+          "options": [
+            "Square",
+            "Wide",
+            "Tall",
+            "All"
+          ],
+          "info": "Filter images by aspect ratio. The following are the possible filter values: Square — Return images with standard aspect ratio; Wide — Return images with wide screen aspect ratio; Tall — Return images with tall aspect ratio; All — Do not filter by aspect. Specifying this value is the same as not specifying the aspect parameter.",
+          "required": false
+        },
+        {
+          "name": "color",
+          "type": "Select",
+          "options": [
+            "ColorOnly",
+            "Monochrome",
+            "Black",
+            "Blue",
+            "Brown",
+            "Gray",
+            "Green",
+            "Orange",
+            "Pink",
+            "Purple",
+            "Red",
+            "Teal",
+            "White",
+            "Yellow"
+          ],
+          "info": "Filter images by color. The following are the possible filter values: ColorOnly — Return color images, Monochrome — Return black and white images, Black, Blue, Brown, Gray, Green, Orange, Pink, Purple, Red, Teal, White, Yellow",
+          "required": false
+        },
+        {
+          "name": "imageContent",
+          "type": "Select",
+          "options": [
+            "Face",
+            "Portrait"
+          ],
+          "info": "Filter images by content. The following are the possible filter values: Face — Return images that show only a person's face; Portrait — Return images that show only a person's head and shoulders",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "Select",
+          "options": [
+            "Small",
+            "Medium",
+            "Large",
+            "Wallpaper",
+            "All"
+          ],
+          "info": "Filter images by size. The following are the possible filter values: Small — Return images that are less than 200x200 pixels; Medium — Return images that are greater than or equal to 200x200 pixels but less than 500x500 pixels; Large — Return images that are 500x500 pixels or larger; Wallpaper — Return wallpaper images; All — Do not filter by size. Specifying this value is the same as not specifying the size parameter.",
+          "required": false
+        },
+        {
+          "name": "height",
+          "type": "Number",
+          "info": "Filter images that have the specified height, in pixels.",
+          "required": false
+        },
+        {
+          "name": "width",
+          "type": "Number",
+          "info": "Filter images that have the specified width, in pixels.",
+          "required": false
+        },
+        {
+          "name": "imageType",
+          "type": "Select",
+          "options": [
+            "AnimatedGif",
+            "Clipart",
+            "Line",
+            "Photo",
+            "Shopping"
+          ],
+          "info": "Filter images by image type. The following are the possible filter values: AnimatedGif — Return only animated GIFs; Clipart — Return only clip art images; Line — Return only line drawings; Photo — Return only photographs (excluding line drawings, animated Gifs, and clip art); Shopping — Return only images that contain items where Bing knows of a merchant that is selling the items.",
+          "required": false
+        },
+        {
+          "name": "count",
+          "type": "Number",
+          "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "searchVideo",
+      "description": "This endpoint allows to get back a list of relevant videos.",
+      "args": [
+        {
+          "name": "subscriptionKey",
+          "type": "credentials",
+          "info": "The api key obtained from Microsoft Cognitive Services.",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "The user's search query string.",
+          "required": true
+        },
+        {
+          "name": "market",
+          "type": "Select",
+          "options": [
+            "es-AR",
+            "en-AU",
+            "de-AT",
+            "nl-BE",
+            "fr-BE",
+            "pt-BR",
+            "en-CA",
+            "fr-CA",
+            "es-CL",
+            "da-DK",
+            "fi-FI",
+            "fr-FR",
+            "de-DE",
+            "zh-HK",
+            "en-IN",
+            "en-ID",
+            "en-IE",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "en-MY",
+            "es-MX",
+            "nl-NL",
+            "en-NZ",
+            "no-NO",
+            "zh-CN",
+            "pl-PL",
+            "pt-PT",
+            "en-PH",
+            "ru-RU",
+            "ar-SA",
+            "en-ZA",
+            "es-ES",
+            "sv-SE",
+            "fr-CH",
+            "de-CH",
+            "zh-TW",
+            "tr-TR",
+            "en-GB",
+            "en-US",
+            "es-US"
+          ],
+          "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
+          "required": false
+        },
+        {
+          "name": "safeSearch",
+          "type": "Select",
+          "options": [
+            "Off",
+            "Moderate",
+            "Strict"
+          ],
+          "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
+          "required": false
+        },
+        {
+          "name": "textDecorations",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
+          "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
+          "required": false
+        },
+        {
+          "name": "textFormat",
+          "type": "Select",
+          "options": [
+            "Raw",
+            "HTML"
+          ],
+          "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+          "required": false
+        },
+        {
+          "name": "videoLength",
+          "type": "Select",
+          "options": [
+            "Short",
+            "Medium",
+            "Long",
+            "All"
+          ],
+          "info": "Filter videos by length. The following are the possible filter values: Short — Return videos that are less than 5 minutes; Medium — Return videos that are between 5 and 20 minutes, inclusive; Long — Return videos that are longer than 20 minutes; All — Do not filter by length. Specifying this value is the same as not specifying the videoLength parameter.",
+          "required": false
+        },
+        {
+          "name": "resolution",
+          "type": "Select",
+          "options": [
+            "480p",
+            "720p",
+            "1080p",
+            "All"
+          ],
+          "info": "Filter videos by resolution. The following are the possible filter values: 480p — Return videos with a 480p or higher resolution; 720p — Return videos with a 720p or higher resolution; 1080p — Return videos with a 1080p or higher resolution; All — Do not filter by resolution. Specifying this value is the same as not specifying the resolution parameter.",
+          "required": false
+        },
+        {
+          "name": "count",
+          "type": "Number",
+          "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "searchNews",
+      "description": "This endpoint allows to get back a list of relevant news.",
+      "args": [
+        {
+          "name": "subscriptionKey",
+          "type": "credentials",
+          "info": "The api key obtained from Microsoft Cognitive Services.",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "The user's search query string.",
+          "required": true
+        },
+        {
+          "name": "market",
+          "type": "Select",
+          "options": [
+            "es-AR",
+            "en-AU",
+            "de-AT",
+            "nl-BE",
+            "fr-BE",
+            "pt-BR",
+            "en-CA",
+            "fr-CA",
+            "es-CL",
+            "da-DK",
+            "fi-FI",
+            "fr-FR",
+            "de-DE",
+            "zh-HK",
+            "en-IN",
+            "en-ID",
+            "en-IE",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "en-MY",
+            "es-MX",
+            "nl-NL",
+            "en-NZ",
+            "no-NO",
+            "zh-CN",
+            "pl-PL",
+            "pt-PT",
+            "en-PH",
+            "ru-RU",
+            "ar-SA",
+            "en-ZA",
+            "es-ES",
+            "sv-SE",
+            "fr-CH",
+            "de-CH",
+            "zh-TW",
+            "tr-TR",
+            "en-GB",
+            "en-US",
+            "es-US"
+          ],
+          "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
+          "required": false
+        },
+        {
+          "name": "safeSearch",
+          "type": "Select",
+          "options": [
+            "Off",
+            "Moderate",
+            "Strict"
+          ],
+          "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
+          "required": false
+        },
+        {
+          "name": "textDecorations",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
+          "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
+          "required": false
+        },
+        {
+          "name": "textFormat",
+          "type": "Select",
+          "options": [
+            "Raw",
+            "HTML"
+          ],
+          "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+          "required": false
+        },
+        {
+          "name": "category",
+          "type": "String",
+          "info": "The category of articles to return. For example, Sports articles or Entertainment articles. For a list of possible categories, see News Categories by Market (https://msdn.microsoft.com/en-us/library/dn760793.aspx#categoriesbymarket).",
+          "required": false
+        },
+        {
+          "name": "count",
+          "type": "Number",
+          "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getRelatedSearch",
+      "description": "This endpoint allows to get back a list of related data.",
+      "args": [
+        {
+          "name": "subscriptionKey",
+          "type": "credentials",
+          "info": "The api key obtained from Microsoft Cognitive Services.",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "The user's search query string.",
+          "required": true
+        },
+        {
+          "name": "market",
+          "type": "Select",
+          "options": [
+            "es-AR",
+            "en-AU",
+            "de-AT",
+            "nl-BE",
+            "fr-BE",
+            "pt-BR",
+            "en-CA",
+            "fr-CA",
+            "es-CL",
+            "da-DK",
+            "fi-FI",
+            "fr-FR",
+            "de-DE",
+            "zh-HK",
+            "en-IN",
+            "en-ID",
+            "en-IE",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "en-MY",
+            "es-MX",
+            "nl-NL",
+            "en-NZ",
+            "no-NO",
+            "zh-CN",
+            "pl-PL",
+            "pt-PT",
+            "en-PH",
+            "ru-RU",
+            "ar-SA",
+            "en-ZA",
+            "es-ES",
+            "sv-SE",
+            "fr-CH",
+            "de-CH",
+            "zh-TW",
+            "tr-TR",
+            "en-GB",
+            "en-US",
+            "es-US"
+          ],
+          "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
+          "required": false
+        },
+        {
+          "name": "safeSearch",
+          "type": "Select",
+          "options": [
+            "Off",
+            "Moderate",
+            "Strict"
+          ],
+          "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
+          "required": false
+        },
+        {
+          "name": "textDecorations",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
+          "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
+          "required": false
+        },
+        {
+          "name": "textFormat",
+          "type": "Select",
+          "options": [
+            "Raw",
+            "HTML"
+          ],
+          "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+          "required": false
+        },
+        {
+          "name": "count",
+          "type": "Number",
+          "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSpellingSuggestions",
+      "description": "This endpoint allows to get back a list data with spelling suggestions.",
+      "args": [
+        {
+          "name": "subscriptionKey",
+          "type": "credentials",
+          "info": "The api key obtained from Microsoft Cognitive Services.",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "The user's search query string.",
+          "required": true
+        },
+        {
+          "name": "market",
+          "type": "Select",
+          "options": [
+            "es-AR",
+            "en-AU",
+            "de-AT",
+            "nl-BE",
+            "fr-BE",
+            "pt-BR",
+            "en-CA",
+            "fr-CA",
+            "es-CL",
+            "da-DK",
+            "fi-FI",
+            "fr-FR",
+            "de-DE",
+            "zh-HK",
+            "en-IN",
+            "en-ID",
+            "en-IE",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "en-MY",
+            "es-MX",
+            "nl-NL",
+            "en-NZ",
+            "no-NO",
+            "zh-CN",
+            "pl-PL",
+            "pt-PT",
+            "en-PH",
+            "ru-RU",
+            "ar-SA",
+            "en-ZA",
+            "es-ES",
+            "sv-SE",
+            "fr-CH",
+            "de-CH",
+            "zh-TW",
+            "tr-TR",
+            "en-GB",
+            "en-US",
+            "es-US"
+          ],
+          "info": "The market where the results come from. Typically, this is the country where the user is making the request from; however, it could be a different country if the user is not located in a country where Bing delivers results. The market must be in the form -. For example, en-US.",
+          "required": false
+        },
+        {
+          "name": "safeSearch",
+          "type": "Select",
+          "options": [
+            "Off",
+            "Moderate",
+            "Strict"
+          ],
+          "info": "A filter used to filter results for adult content. Possible values: Off — Return webpages with adult text, images, or videos. Moderate — Return webpages with adult text; however, the articles will not include adult images or videos. Strict — Do not return webpages with adult text, images, or videos. Default is Moderate",
+          "required": false
+        },
+        {
+          "name": "textDecorations",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
+          "info": "A Boolean value that determines whether query terms in the response strings will include hit highlighting characters. If true, the strings will include highlighting characters; otherwise, false. The default is false.",
+          "required": false
+        },
+        {
+          "name": "textFormat",
+          "type": "Select",
+          "options": [
+            "Raw",
+            "HTML"
+          ],
+          "info": "The type of formatting to apply to displayable strings. The following are the possible values: Raw—Use special Unicode characters, E000 and E001, to highlight the query terms; HTML—Use HTML <b> tags to highlight the query terms. The default is Raw. To enable or disable hit highlighting, set the textDecorations query parameter.",
+          "required": false
+        },
+        {
+          "name": "count",
+          "type": "Number",
+          "info": "The number of news results to return in the response. The actual number delivered may be less than requested.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "The zero-based offset that indicates the number of news results to skip before returning results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    }
+  ]
 }

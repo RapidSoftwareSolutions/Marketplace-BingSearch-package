@@ -31,7 +31,7 @@ $app->post('/api/BingSearch/advancedSearch', function ($request, $response, $arg
         $query['textFormat'] = $post_data['args']['textFormat'];
     }
     if(!empty($post_data['args']['responseFilter'])) {
-        $query['responseFilter'] = $post_data['args']['responseFilter'];
+        $query['responseFilter'] = is_array($post_data['args']['responseFilter']) ? implode(', ', $post_data['args']['responseFilter']) : $post_data['args']['responseFilter'];
     }
     
     $headers['Ocp-Apim-Subscription-Key'] = $post_data['args']['subscriptionKey'];
