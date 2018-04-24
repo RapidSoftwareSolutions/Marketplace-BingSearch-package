@@ -16,6 +16,6 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         
-        'api_url' => 'https://api.cognitive.microsoft.com/bing/v5.0'
+        'api_url' => 'https://api.cognitive.microsoft.com/bing/v7.0'
     ],
 ];
